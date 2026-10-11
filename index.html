@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cargopack: jaunā mājaslapa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12222B;--steel:#1F5C66;--paper:#F2F4F3;--card:#fff;--strap:#E8B923;--line:#C9D3D3;--muted:#4F6269;--error:#A12B2B;--ok:#1F6B45;
+  --head:"Archivo","Arial Narrow",Arial,sans-serif;--body:"Source Sans 3","Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.5 var(--body)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--ink);color:#fff;padding:44px 0 48px}
+header.hero h1{font:800 clamp(32px,6vw,48px)/1.05 var(--head);margin:0 0 10px}
+header.hero p{margin:0;color:#D5E0E0}
+.strap{height:12px;background:var(--strap);position:relative}
+.strap::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dashed #8a6a00;opacity:.5}
+section{padding:36px 0 4px}
+h2{font:800 clamp(24px,4vw,30px)/1.15 var(--head);margin:0 0 6px}
+h3{font:700 18px/1.25 var(--head);margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 20px}
+.box{background:var(--card);border:1px solid var(--line);padding:14px 18px;margin:16px 0}
+.box ul{margin:6px 0 0;padding-left:20px}
+.box p{margin:0}
+.phase{background:var(--card);border-left:6px solid var(--steel);padding:12px 16px;margin:10px 0}
+.phase p{margin:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.split .box{margin:0}
+@media(max-width:640px){.split{grid-template-columns:1fr}}
+.note{border-left:6px solid var(--strap);background:#FBF4D8;padding:10px 14px;margin:16px 0;font-size:16px}
+
+.q{padding:16px 0;border-top:1px solid var(--line)}
+#formBody .q:first-child{border-top:0}
+.qhead{position:relative;margin-bottom:6px;font-weight:600}
+.qhead .lbl{display:inline}
+#formBody{counter-reset:qn}
+.numbered .lbl::before{counter-increment:qn;content:counter(qn) ". ";font-weight:800}
+.req{color:var(--error)}
+input[type=text],input[type=email],textarea{width:100%;font:inherit;color:inherit;background:var(--card);border:1px solid #98A8A8;border-radius:4px;padding:9px 12px}
+textarea{min-height:76px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible,.opt:focus-within{outline:3px solid var(--steel);outline-offset:2px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;border:1px solid #98A8A8;background:var(--card);border-radius:4px;padding:6px 12px;cursor:pointer;user-select:none}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt:has(input:checked){background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.whywrap{display:inline}
+.whybtn{width:20px;height:20px;margin-left:8px;vertical-align:middle;border-radius:50%;border:1px solid #98A8A8;background:#E4E9E9;color:#5B6D73;font:600 12px/1 var(--head);padding:0;cursor:help}
+.whybtn:hover,.whybtn:focus{background:#d3dada}
+.tip{display:none;position:absolute;left:0;top:100%;margin-top:6px;z-index:20;width:min(340px,calc(100vw - 40px));background:var(--ink);color:#fff;font:400 15px/1.4 var(--body);padding:10px 12px;border-radius:4px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.tip b{display:block;color:var(--strap);font:700 13px var(--head);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.whywrap:hover .tip,.whybtn:focus+.tip{display:block}
+
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.actions{padding:20px 0 6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button.btn{font:700 17px var(--head);cursor:pointer;border-radius:4px;padding:12px 24px;border:2px solid var(--ink);background:transparent;color:var(--ink)}
+button.btn.primary{background:var(--strap)}
+button.btn.primary:hover{background:#f3c935}
+button.btn:disabled{opacity:.6;cursor:wait}
+.status{font-size:16px;min-height:1.3em}.status.err{color:var(--error)}
+.saved{color:var(--muted);font-size:14px;margin:4px 0 0}
+#done{display:none;padding:40px 0}
+#done .tick{display:inline-block;background:var(--ok);color:#fff;font:700 14px var(--head);padding:3px 9px;border-radius:3px;margin-bottom:10px}
+#done .tick.fail{background:var(--error)}
+#fallback{background:var(--card);border:1px solid var(--line);padding:16px 18px;margin-top:16px}
+#fallback textarea{min-height:200px;font:14px/1.45 ui-monospace,Consolas,monospace}
+#fallback .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     KĀ LABOT TEKSTUS
+     Maini tikai parasto tekstu starp < > zīmēm, piemēram:
+        <h3>Ko redzam šobrīd</h3>   →   maini "Ko redzam šobrīd"
+     Neaiztiec: id="...", name="...", class="...", value="..." un daļu <script> lapas apakšā.
+     Katram jautājumam ir bloks <div class="q"> ... </div>. Lai izdzēstu jautājumu,
+     izdzēs visu bloku. Dzeltenā paskaidrojuma teksts ir <span class="tip"> iekšā.
+     ================================================================ -->
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Jaunā Cargopack mājaslapa</h1>
+    <p>Īss piedāvājums un 14 jautājumi, apmēram 10 minūtes.</p>
+  </div>
+</header>
+<div class="strap"></div>
+
+<main class="wrap">
+
+  <!-- ===================== PIEDĀVĀJUMS ===================== -->
+  <section id="offer">
+    <h2>Piedāvājums</h2>
+    <p class="lead">Jauna, responsīva dizaina mājaslapa uz WordPress bāzes, trijās valodās. Lapa tiks nodota jūsu īpašumā, saturu vēlāk varēsiet mainīt vai pievienot paši. Labāka SEO un pozīcija Google meklētājā.</p>
+
+    <div class="box">
+      <h3>Ko redzam šobrīd</h3>
+      <ul>
+        <li>Visām pārbaudītajām lapām ir viens un tas pats meta apraksts</li>
+        <li>Nav angļu valodas versijas (ļoti vēlama, ja eksportējat ārpus Latvijas)</li>
+        <li>Nav sitemap (XML vietnes kartes), kas palīdz Google atrast visas lapas</li>
+        <li>Attēli ir ļoti mazi un bez aprakstiem (alt)</li>
+        <li>Nav Google Business profila</li>
+        <li>Tekstos ir drukas kļūdas (piem., “kondesāts”, “saisaistes”)</li>
+        <li>Produktu apraksti sākumlapā ir nogriezti pusteikumā (piem., “Kravas saisaistes...”)</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <h3>1. Jaunā lapa</h3>
+      <p>UX dizains, satura pārnese, WordPress LV/RU/EN, SEO, ātrums, attēlu uzlabošana, angļu tulkojums.</p>
+    </div>
+    <div class="phase">
+      <h3>2. Palaišana</h3>
+      <p>Jaunās lapas palaišana kopā ar jūsu servera uzturētāju, SEO pārnese, 301 pārvirzīšana (redirekti), Google Business, Clarity uzraudzība 4 nedēļas.</p>
+    </div>
+    <div class="phase">
+      <h3>3. Turpinājums (pēc izvēles)</h3>
+      <p>Mēneša uzturēšana un jauns saturs.</p>
+    </div>
+
+    <div class="split">
+      <div class="box">
+        <h3>Es daru</h3>
+        <ul>
+          <li>Lapas dizainu un struktūru, ērtu lietotājiem (UX)</li>
+          <li>Lapas izveidi WordPress vidē un satura pārnesi</li>
+          <li>Angļu valodas tulkojumu</li>
+          <li>Attēlu uzlabošanu, kur nepieciešams</li>
+          <li>Google un mārketinga rīku profilu izveidi (ja nav)</li>
+          <li>Vienotu dizainu sociālajiem tīkliem (pēc izvēles)</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>No jums vajag</h3>
+        <ul>
+          <li>Piekļuves domēnam un hostingam vai servera uzturētāja kontaktus</li>
+          <li>Tulkojumu pārskatīšanu (krievu un angļu valodā)</li>
+          <li>Vienu cilvēku, kas apstiprina dizainu un saturu</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Kas nav iekļauts cenā</h3>
+      <ul>
+        <li>Hostings un domēns</li>
+        <li>GeneratePress licence (ap 55 EUR gadā)</li>
+        <li>Attēlu optimizācijas spraudnis (30–100 EUR, vienreizēja maksa)</li>
+        <li>Daudzvalodu spraudņa Polylang Pro (ap 99 EUR gadā), ja tas būs vajadzīgs</li>
+        <li>Internetveikals (ja nepieciešams, atsevišķi)</li>
+        <li>Citi papildu rīki vai maksas spraudņi, kas projekta laikā var izrādīties nepieciešami (iepriekš saskaņoju ar jums)</li>
+      </ul>
+    </div>
+    <div class="note">SEO rezultāti parasti redzami pēc dažiem mēnešiem. Tehniskos uzlabojumus un mērāmus rādītājus (ātrums, Google PageSpeed rezultāts) varēs redzēt jau pirmajā dienā pēc palaišanas.</div>
+  </section>
+
+  <div class="strap" id="strap2" aria-hidden="true"></div>
+
+  <!-- ===================== ANKETA ===================== -->
+  <section id="form-section">
+    <h2>Anketa</h2>
+    <p class="lead">Ja nezināt, izvēlieties “Nezinu” vai atstājiet tukšu. Atbildes saglabājas šajā pārlūkā.</p>
+
+    <form id="form" novalidate>
+      <div class="hp" aria-hidden="true"><label>Neaizpildīt <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div id="formBody">
+
+    <div class="q">
+      <div class="qhead"><label class="lbl" for="name">Vārds un uzvārds</label> <span class="req" aria-hidden="true">*</span></div>
+      <input type="text" id="name" name="name" autocomplete="name">
+    </div>
+
+    <div class="q">
+      <div class="qhead"><label class="lbl" for="email">E-pasts</label> <span class="req" aria-hidden="true">*</span></div>
+      <input type="email" id="email" name="email" autocomplete="email">
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="access">Kur ir domēns, hostings un e-pasts, un kam ir piekļuve vai kāds ir uzturētāja kontakts?</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Pārejas brīdī domēns jānorāda uz jauno lapu. Ja e-pastu pārnes nepareizi, tas var pārstāt darboties.</span></span></div>
+      <textarea id="access" name="access"></textarea>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="wp_l">
+      <div class="qhead"><span class="lbl" id="wp_l">Vai hostings atbalsta WordPress (PHP 8.1+, MySQL)?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Lapa būs uz WordPress. Ja hostings to neatbalsta vai nedod piekļuvi serverim, jāizvēlas cits.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="wp" value="Jā"><span>Jā</span></label>
+        <label class="opt"><input type="radio" name="wp" value="Nē, vajadzēs jaunu"><span>Nē, vajadzēs jaunu</span></label>
+        <label class="opt"><input type="radio" name="wp" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="dev_l">
+      <div class="qhead"><span class="lbl" id="dev_l">Vai tiks izveidota testa adrese (piem., dev.cargopack.lv)?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Tur redzēsiet gatavo lapu pirms palaišanas, un Google to neredz.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="dev" value="Jā"><span>Jā</span></label>
+        <label class="opt"><input type="radio" name="dev" value="Nē"><span>Nē</span></label>
+        <label class="opt"><input type="radio" name="dev" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="tools_l">
+      <div class="qhead"><span class="lbl" id="tools_l">Kas jums jau ir?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Search Console rāda, pēc kādiem vārdiem Google jūs atrod. Bez tā nevaru pārbaudīt, vai pozīcijas pēc pārejas nav kritušās.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="tools" value="Search Console"><span>Search Console</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Analytics"><span>Analytics</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Google Business Profile"><span>Google Business Profile</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Clarity"><span>Clarity</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Bing Places"><span>Bing Places</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Nav neviena"><span>Nav neviena</span></label>
+        <label class="opt"><input type="checkbox" name="tools" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="top">Kuri 3–5 produkti ir svarīgākie?</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Tos izceļu sākumlapā un izvēlnē un uz tiem veidoju atslēgvārdus.</span></span></div>
+      <textarea id="top" name="top"></textarea>
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="clients">Kas ir galvenie klienti un kurās valstīs strādājat?</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Parāda, ko un kādā valodā cilvēki meklē.</span></span></div>
+      <input type="text" id="clients" name="clients">
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="lang_l">
+      <div class="qhead"><span class="lbl" id="lang_l">Kādās valodās klienti raksta vai zvana?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Visas trīs valodas būs pilnā apjomā. Atbilde parāda, kuras valodas klienti ir vissvarīgākie, lai tām pievērstu visvairāk uzmanības: meklējamie atslēgvārdi, tulkojuma kvalitāte un kontaktu veidlapas.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="lang" value="Latviešu"><span>Latviešu</span></label>
+        <label class="opt"><input type="checkbox" name="lang" value="Krievu"><span>Krievu</span></label>
+        <label class="opt"><input type="checkbox" name="lang" value="Angļu"><span>Angļu</span></label>
+        <label class="opt"><input type="checkbox" name="lang" value="Citā"><span>Citā</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="price_l">
+      <div class="qhead"><span class="lbl" id="price_l">Vai lapā drīkst rādīt cenas?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Cena vai diapazons piesaista apmeklētājus ar konkrētāku nodomu.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="price" value="Konkrētas"><span>Konkrētas</span></label>
+        <label class="opt"><input type="radio" name="price" value="Diapazonus"><span>Diapazonus</span></label>
+        <label class="opt"><input type="radio" name="price" value="Nē, pēc pieprasījuma"><span>Nē, pēc pieprasījuma</span></label>
+        <label class="opt"><input type="radio" name="price" value="Nav izlemts"><span>Nav izlemts</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="pdf_l">
+      <div class="qhead"><span class="lbl" id="pdf_l">Vai ir PDF katalogi un datasheets, ko drīkst publicēt?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Tehniskie dokumenti piesaista cilvēkus, kuri meklē precīzu informāciju.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="pdf" value="Jā"><span>Jā</span></label>
+        <label class="opt"><input type="radio" name="pdf" value="Nav"><span>Nav</span></label>
+        <label class="opt"><input type="radio" name="pdf" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered" role="group" aria-labelledby="photos_l">
+      <div class="qhead"><span class="lbl" id="photos_l">Vai ir oriģinālie attēli augstā kvalitātē?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Oriģināli ir labāki par uzlabotiem sīkiem attēliem.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="photos" value="Ir"><span>Ir</span></label>
+        <label class="opt"><input type="radio" name="photos" value="Daži"><span>Daži</span></label>
+        <label class="opt"><input type="radio" name="photos" value="Nav, ņemsim no esošās lapas"><span>Nav, ņemsim no esošās lapas</span></label>
+        <label class="opt"><input type="radio" name="photos" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="old">Kas vairs nav aktuāls (produkti, teksti)?</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Novecojušu saturu labāk nepārnest, lai Google to nerādītu.</span></span></div>
+      <textarea id="old" name="old"></textarea>
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="company">Uzņēmuma nosaukums, reģ. un PVN nr., adrese, darba laiks, tālruņi</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Šiem datiem jābūt vienādiem lapā, Google profilā un katalogos (vietējā SEO).</span></span></div>
+      <textarea id="company" name="company"></textarea>
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="social">Facebook, LinkedIn un citi profili (ja ir)</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Sasaistu tos ar lapu. Ja kāda nav, izveidoju.</span></span></div>
+      <input type="text" id="social" name="social">
+    </div>
+
+    <div class="q numbered">
+      <div class="qhead"><label class="lbl" for="approve">Kas apstiprinās dizainu un tulkojumus?</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Lai darbs nekavējas, vajag vienu cilvēku, kas pieņem lēmumus.</span></span></div>
+      <input type="text" id="approve" name="approve">
+    </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn primary" id="submitBtn">Nosūtīt</button>
+        <button type="button" class="btn" id="clearBtn">Notīrīt</button>
+        <span class="status" id="status" role="alert"></span>
+      </div>
+      <p class="saved" id="saved"></p>
+    </form>
+  </section>
+
+  <!-- ===================== PĒC NOSŪTĪŠANAS ===================== -->
+  <section id="done" aria-live="polite">
+    <span class="tick" id="doneTag"></span>
+    <h2 id="doneTitle"></h2>
+    <p class="lead" id="doneText"></p>
+    <div id="fallback">
+      <p class="saved" id="fallbackHint" style="margin:0 0 8px"></p>
+      <textarea id="fallbackText" readonly></textarea>
+      <div class="row">
+        <button type="button" class="btn" id="copyBtn">Kopēt</button>
+        <button type="button" class="btn" id="dlBtn">Lejupielādēt .txt</button>
+        <button type="button" class="btn primary" id="mailBtn">Atvērt e-pastu</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Šī lapa ir paredzēta tikai SIA Cargopack un nav indeksējama meklētājos.</div></footer>
+
+<script>
+/* ===== IESTATĪJUMI (tikai tad, ja to vajag) ===== */
+const CONFIG = {
+  ownerEmail: "",   // e-pasts, uz kuru nosūtīt atbildes (poga "Atvērt e-pastu")
+  endpoint:   "",   // formu servisa adrese (Web3Forms/Formspree); ja tukšs, atbildes var kopēt vai lejupielādēt
+  accessKey:  ""    // Web3Forms atslēga
+};
+/* Tekstus pēc nosūtīšanas maini šeit: */
+const DONE = {
+  ok:     ["Nosūtīts", "Paldies, atbildes saņemtas", "Sazināšos ar jums tuvākajā laikā."],
+  manual: ["Gatavs", "Atbildes ir gatavas nosūtīšanai", "Nosūtiet tās pa e-pastu ar pogām zemāk."],
+  fail:   ["Nav nosūtīts", "Nosūtiet atbildes pa e-pastu", "Automātiski nosūtīt neizdevās. Izmantojiet pogas zemāk."],
+  copyHint: "Atbilžu kopija, ja vajag to saglabāt.",
+  errName: "Ierakstiet vārdu.", errEmail: "Ierakstiet derīgu e-pastu.", sending: "Sūtām…", copied: "Nokopēts"
+};
+
+/* ===== TĀLĀK NEAIZTIEC ===== */
+const $ = id => document.getElementById(id), form = $("form");
+
+function collect(){
+  let n = 0;
+  return [...form.querySelectorAll(".q")].map(q => {
+    let label = q.querySelector(".lbl").textContent.trim();
+    if (q.classList.contains("numbered")) { n++; label = n + ". " + label; }
+    let value = "";
+    if (q.querySelector("input[type=checkbox],input[type=radio]")) {
+      value = [...q.querySelectorAll("input:checked")].map(i => i.value).join(", ");
+    } else {
+      const f = q.querySelector("input,textarea"); value = f ? f.value.trim() : "";
+    }
+    return { label, value };
+  });
+}
+const asText = r => ["Cargopack anketa", new Date().toLocaleString("lv-LV"), ""]
+  .concat(...r.map(x => [x.label, "  " + (x.value || "—"), ""])).join("\n");
+
+const KEY = "cargopack-anketa-v3", saved = $("saved");
+function save(){
+  try{ const d = {}; new FormData(form).forEach((v,k) => { if (k !== "website") (d[k] = d[k] || []).push(v); });
+       localStorage.setItem(KEY, JSON.stringify(d)); saved.textContent = "Melnraksts saglabāts šajā pārlūkā."; }catch(e){}
+}
+(function(){
+  try{ const d = JSON.parse(localStorage.getItem(KEY) || "null"); if (!d) return;
+    Object.entries(d).forEach(([k, vals]) => form.querySelectorAll(`[name="${k}"]`).forEach(el => {
+      if (el.type === "checkbox" || el.type === "radio") el.checked = vals.includes(el.value); else el.value = vals[0] || "";
+    })); }catch(e){}
+})();
+form.addEventListener("input", save); form.addEventListener("change", save);
+$("clearBtn").addEventListener("click", () => {
+  if (!confirm("Notīrīt visas atbildes?")) return;
+  form.reset(); try{ localStorage.removeItem(KEY); }catch(e){} saved.textContent = ""; setStatus("");
+});
+
+function setStatus(t, err){ const s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+function showDone(kind, text){
+  const m = DONE[kind];
+  $("doneTag").textContent = m[0]; $("doneTag").className = "tick" + (kind === "fail" ? " fail" : "");
+  $("doneTitle").textContent = m[1]; $("doneText").textContent = m[2];
+  $("fallbackHint").textContent = kind === "ok" ? DONE.copyHint : "";
+  $("fallbackText").value = text;
+  $("mailBtn").style.display = kind === "ok" ? "none" : "";
+  ["offer","form-section","strap2"].forEach(i => $(i).style.display = "none");
+  $("done").style.display = "block"; window.scrollTo({ top: 0 });
+}
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  if (form.elements.website.value) return;
+  const name = form.elements.name.value.trim(), email = form.elements.email.value.trim();
+  if (!name){ setStatus(DONE.errName, true); form.elements.name.focus(); return; }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ setStatus(DONE.errEmail, true); form.elements.email.focus(); return; }
+  setStatus("");
+  const text = asText(collect());
+  if (!CONFIG.endpoint){ showDone("manual", text); return; }
+  $("submitBtn").disabled = true; setStatus(DONE.sending);
+  try{
+    const p = { subject: "Cargopack anketa: " + name, from_name: name, name, email, message: text };
+    if (CONFIG.accessKey) p.access_key = CONFIG.accessKey;
+    const r = await fetch(CONFIG.endpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(p) });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    try{ localStorage.removeItem(KEY); }catch(_){}
+    showDone("ok", text);
+  }catch(err){ $("submitBtn").disabled = false; setStatus(""); showDone("fail", text); }
+});
+$("copyBtn").addEventListener("click", async () => {
+  const ta = $("fallbackText");
+  try{ await navigator.clipboard.writeText(ta.value); }catch(e){ ta.select(); document.execCommand("copy"); }
+  $("copyBtn").textContent = DONE.copied;
+});
+$("dlBtn").addEventListener("click", () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([$("fallbackText").value], { type:"text/plain;charset=utf-8" }));
+  a.download = "cargopack-anketa.txt"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+});
+$("mailBtn").addEventListener("click", () => {
+  location.href = "mailto:" + encodeURIComponent(CONFIG.ownerEmail || "") + "?subject=" + encodeURIComponent("Cargopack anketa") +
+                  "&body=" + encodeURIComponent($("fallbackText").value.slice(0, 1800));
+});
+</script>
+</body>
+</html>
