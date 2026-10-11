@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Cargopack: jaunā mājaslapa</title>
+<title>CARGOPACK: jaunā mājaslapa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -25,9 +25,19 @@ h3{font:700 18px/1.25 var(--head);margin:0 0 6px}
 .lead{color:var(--muted);margin:0 0 20px}
 .box{background:var(--card);border:1px solid var(--line);padding:14px 18px;margin:16px 0}
 .box ul{margin:6px 0 0;padding-left:20px}
+.box li{position:relative}
 .box p{margin:0}
 .phase{background:var(--card);border-left:6px solid var(--steel);padding:12px 16px;margin:10px 0}
 .phase p{margin:0}
+.phase ul{list-style:none;margin:8px 0 0;padding:0}
+.phase li{position:relative;padding-left:20px;margin:4px 0}
+.phase li::before{content:"–";position:absolute;left:0;font-weight:700;color:var(--steel)}
+.phase.optional{border-left-color:var(--line);border-left-style:dashed;background:#FAFBFB}
+.contact{margin:16px 0 8px;font-weight:600}
+.contact a{color:var(--steel)}
+.pricenote{margin:0 0 22px;color:#6B7C82;font-size:14px}
+.phase .small{margin-top:10px;color:var(--muted);font-size:16px}
+.priceline{margin:14px 0 2px;color:#6B7C82;font:700 clamp(22px,4vw,28px)/1.2 var(--head)}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
 .split .box{margin:0}
 @media(max-width:640px){.split{grid-template-columns:1fr}}
@@ -85,8 +95,8 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
 
 <header class="hero">
   <div class="wrap">
-    <h1>Jaunā Cargopack mājaslapa</h1>
-    <p>Īss piedāvājums un 14 jautājumi, apmēram 10 minūtes.</p>
+    <h1>Jaunā CARGOPACK mājaslapa</h1>
+    <p>Īss piedāvājums un 15 jautājumi, apmēram 10 minūtes.</p>
   </div>
 </header>
 <div class="strap"></div>
@@ -96,7 +106,7 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
   <!-- ===================== PIEDĀVĀJUMS ===================== -->
   <section id="offer">
     <h2>Piedāvājums</h2>
-    <p class="lead">Jauna, responsīva dizaina mājaslapa uz WordPress bāzes, trijās valodās. Lapa tiks nodota jūsu īpašumā, saturu vēlāk varēsiet mainīt vai pievienot paši. Labāka SEO un pozīcija Google meklētājā.</p>
+    <p class="lead">Jauna, responsīva dizaina mājaslapa uz WordPress bāzes, trijās valodās. Lapa tiks nodota jūsu īpašumā, saturu vēlāk varēsiet mainīt vai pievienot paši. Labāka SEO un lielākas iespējas Google meklētājā.</p>
 
     <div class="box">
       <h3>Ko redzam šobrīd</h3>
@@ -108,42 +118,67 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
         <li>Nav Google Business profila</li>
         <li>Tekstos ir drukas kļūdas (piem., “kondesāts”, “saisaistes”)</li>
         <li>Produktu apraksti sākumlapā ir nogriezti pusteikumā (piem., “Kravas saisaistes...”)</li>
+        <li>Jaunumu sadaļā jaunākais ieraksts ir no 2019. gada, un nav sadaļas “Par mums”</li>
       </ul>
     </div>
 
     <div class="phase">
-      <h3>1. Jaunā lapa</h3>
-      <p>UX dizains, satura pārnese, WordPress LV/RU/EN, SEO, ātrums, attēlu uzlabošana, angļu tulkojums.</p>
+      <h3>Jaunā lapa</h3>
+      <ul>
+        <li>Nozares izpēte</li>
+        <li>Konkurentu izpēte</li>
+        <li>Atslēgvārdu izpēte (ko klienti meklē Google)</li>
+        <li>Esošās lapas SEO audits un satura inventarizācija</li>
+        <li>Lapas struktūras un satura plāns</li>
+        <li>Responsīvs dizains, pielāgots UX</li>
+        <li>Lapas izveide uz WordPress latviešu, krievu un angļu valodā</li>
+        <li>Pamata lapas: Par mums, Klienti (piemēri un atsauksmes), Jaunumi</li>
+        <li>Satura pārnese no esošās lapas</li>
+        <li>Teksta kļūdu labošana latviešu valodā un pielāgošana SEO (virsraksti, apraksti)</li>
+        <li>Attēlu retuša un optimizācija</li>
+        <li>Angļu valodas tulkojums</li>
+        <li>SEO pamati: meta dati, schema, hreflang, sitemap</li>
+        <li>Google Analytics, Search Console un Clarity uzstādīšana, sitemap iesniegšana</li>
+        <li>Sīkdatņu paziņojuma spraudņa uzstādīšana</li>
+        <li>Ātruma optimizācija</li>
+      </ul>
     </div>
     <div class="phase">
-      <h3>2. Palaišana</h3>
-      <p>Jaunās lapas palaišana kopā ar jūsu servera uzturētāju, SEO pārnese, 301 pārvirzīšana (redirekti), Google Business, Clarity uzraudzība 4 nedēļas.</p>
-    </div>
-    <div class="phase">
-      <h3>3. Turpinājums (pēc izvēles)</h3>
-      <p>Mēneša uzturēšana un jauns saturs.</p>
+      <h3>Palaišana</h3>
+      <ul>
+        <li>Jaunās lapas palaišana kopā ar jūsu servera uzturētāju</li>
+        <li>SEO pārnese un 301 pārvirzīšana (redirekti)</li>
+        <li>Google Business profila izveide</li>
+        <li>Ātruma un SEO pārbaude pēc palaišanas (Google PageSpeed)</li>
+        <li>Uzraudzība un kļūdu labošana 1 nedēļu pēc palaišanas</li>
+        <li>Īsa pamācība, kā pašiem mainīt saturu</li>
+      </ul>
     </div>
 
-    <div class="split">
-      <div class="box">
-        <h3>Es daru</h3>
-        <ul>
-          <li>Lapas dizainu un struktūru, ērtu lietotājiem (UX)</li>
-          <li>Lapas izveidi WordPress vidē un satura pārnesi</li>
-          <li>Angļu valodas tulkojumu</li>
-          <li>Attēlu uzlabošanu, kur nepieciešams</li>
-          <li>Google un mārketinga rīku profilu izveidi (ja nav)</li>
-          <li>Vienotu dizainu sociālajiem tīkliem (pēc izvēles)</li>
-        </ul>
-      </div>
-      <div class="box">
-        <h3>No jums vajag</h3>
-        <ul>
-          <li>Piekļuves domēnam un hostingam vai servera uzturētāja kontaktus</li>
-          <li>Tulkojumu pārskatīšanu (krievu un angļu valodā)</li>
-          <li>Vienu cilvēku, kas apstiprina dizainu un saturu</li>
-        </ul>
-      </div>
+    <p class="priceline">Prognozētā cena: 3600–4200 EUR</p>
+    <p class="pricenote">Izstrāde plānota 3–4 mēnešu laikā.</p>
+
+    <div class="phase optional">
+      <h3>Turpinājums (pēc izvēles)</h3>
+      <ul>
+        <li>Jauna satura izstrāde un tekstu rakstīšana no nulles (produktu lapas, raksti, jaunumi)</li>
+        <li>Lapas pilnveide pēc analītikas datiem</li>
+        <li>Mēneša pārskats ar ieteikumiem</li>
+        <li>Sociālo tīklu kontu vizuālais pielāgojums vienotam dizainam (pēc pieprasījuma)</li>
+      </ul>
+      <p class="small">Šie darbi ir pēc nepieciešamības un par atsevišķu samaksu, cena pēc vienošanās.</p>
+    </div>
+
+    <div class="box">
+      <h3>No jums nepieciešams</h3>
+      <ul>
+        <li>Piekļuves domēnam un hostingam vai servera uzturētāja kontaktus</li>
+        <li>Krievu un angļu valodas tekstu pārskatīšanu (tulkojumi un esošo krievu tekstu kļūdas)</li>
+        <li>Informāciju un attēlus jaunajām lapām (par uzņēmumu, klientu logotipi, atsauksmes, sertifikāti)</li>
+        <li>Vienu cilvēku, kas apstiprina dizainu un saturu</li>
+        <li>Palīdzību Google Business profila apstiprināšanā <span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc tas vajadzīgs">?</button><span class="tip" role="tooltip"><b>Kāpēc tas vajadzīgs</b>Google profila apstiprināšanai parasti jāveic video, zvans vai jāievada kods. Vajadzīgs cilvēks uz vietas, kas var nofilmēt telpas vai atbildēt uz zvanu.</span></span></li>
+        <li>Kopā ar mani uzstādīt galveno e-pastu (vēlams Gmail) un tālruņa numuru, kas būs sociālo tīklu un analītikas rīku administrators</li>
+      </ul>
     </div>
 
     <div class="box">
@@ -152,12 +187,12 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
         <li>Hostings un domēns</li>
         <li>GeneratePress licence (ap 55 EUR gadā)</li>
         <li>Attēlu optimizācijas spraudnis (30–100 EUR, vienreizēja maksa)</li>
-        <li>Daudzvalodu spraudņa Polylang Pro (ap 99 EUR gadā), ja tas būs vajadzīgs</li>
         <li>Internetveikals (ja nepieciešams, atsevišķi)</li>
         <li>Citi papildu rīki vai maksas spraudņi, kas projekta laikā var izrādīties nepieciešami (iepriekš saskaņoju ar jums)</li>
       </ul>
     </div>
     <div class="note">SEO rezultāti parasti redzami pēc dažiem mēnešiem. Tehniskos uzlabojumus un mērāmus rādītājus (ātrums, Google PageSpeed rezultāts) varēs redzēt jau pirmajā dienā pēc palaišanas.</div>
+    <p class="contact">Lai sazinātos, varat rakstīt uz <a href="mailto:rota.andersone@gmail.com">rota.andersone@gmail.com</a>.</p>
   </section>
 
   <div class="strap" id="strap2" aria-hidden="true"></div>
@@ -196,7 +231,7 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
     </div>
 
     <div class="q numbered" role="group" aria-labelledby="dev_l">
-      <div class="qhead"><span class="lbl" id="dev_l">Vai tiks izveidota testa adrese (piem., dev.cargopack.lv)?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Tur redzēsiet gatavo lapu pirms palaišanas, un Google to neredz.</span></span></div>
+      <div class="qhead"><span class="lbl" id="dev_l">Vai piekrītat, ka tiks izveidota testa adrese (piem., dev.cargopack.lv)?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Tur redzēsiet gatavo lapu pirms palaišanas, un Google to neredz.</span></span></div>
       <div class="opts">
         <label class="opt"><input type="radio" name="dev" value="Jā"><span>Jā</span></label>
         <label class="opt"><input type="radio" name="dev" value="Nē"><span>Nē</span></label>
@@ -271,6 +306,18 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
       <textarea id="old" name="old"></textarea>
     </div>
 
+    <div class="q numbered" role="group" aria-labelledby="pages_l">
+      <div class="qhead"><span class="lbl" id="pages_l">Kādas papildu lapas vēlaties?</span><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Šīs lapas parāda Google, ka uzņēmums ir uzticams, un dod vairāk lapu, ko atrast meklētājā.</span></span></div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="pages" value="Par mums"><span>Par mums</span></label>
+        <label class="opt"><input type="checkbox" name="pages" value="Klienti un atsauksmes"><span>Klienti un atsauksmes</span></label>
+        <label class="opt"><input type="checkbox" name="pages" value="Jaunumi"><span>Jaunumi</span></label>
+        <label class="opt"><input type="checkbox" name="pages" value="BUJ (biežākie jautājumi)"><span>BUJ (biežākie jautājumi)</span></label>
+        <label class="opt"><input type="checkbox" name="pages" value="Sertifikāti"><span>Sertifikāti</span></label>
+        <label class="opt"><input type="checkbox" name="pages" value="Nezinu"><span>Nezinu</span></label>
+      </div>
+    </div>
+
     <div class="q numbered">
       <div class="qhead"><label class="lbl" for="company">Uzņēmuma nosaukums, reģ. un PVN nr., adrese, darba laiks, tālruņi</label><span class="whywrap"><button type="button" class="whybtn" aria-label="Kāpēc jautāju">?</button><span class="tip" role="tooltip"><b>Kāpēc jautāju</b>Šiem datiem jābūt vienādiem lapā, Google profilā un katalogos (vietējā SEO).</span></span></div>
       <textarea id="company" name="company"></textarea>
@@ -313,14 +360,14 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
   </section>
 </main>
 
-<footer><div class="wrap">Šī lapa ir paredzēta tikai SIA Cargopack un nav indeksējama meklētājos.</div></footer>
+<footer><div class="wrap">Šī lapa ir paredzēta tikai SIA CARGOPACK un nav indeksējama meklētājos.</div></footer>
 
 <script>
 /* ===== IESTATĪJUMI (tikai tad, ja to vajag) ===== */
 const CONFIG = {
-  ownerEmail: "",   // e-pasts, uz kuru nosūtīt atbildes (poga "Atvērt e-pastu")
-  endpoint:   "",   // formu servisa adrese (Web3Forms/Formspree); ja tukšs, atbildes var kopēt vai lejupielādēt
-  accessKey:  ""    // Web3Forms atslēga
+  ownerEmail: "rota.andersone@gmail.com",   // e-pasts, uz kuru nosūtīt atbildes (poga "Atvērt e-pastu")
+  endpoint:   "https://api.web3forms.com/submit",   // formu servisa adrese (Web3Forms/Formspree); ja tukšs, atbildes var kopēt vai lejupielādēt
+  accessKey:  "985f7945-c755-4053-af73-fa8b1544da38"    // Web3Forms atslēga
 };
 /* Tekstus pēc nosūtīšanas maini šeit: */
 const DONE = {
@@ -348,7 +395,7 @@ function collect(){
     return { label, value };
   });
 }
-const asText = r => ["Cargopack anketa", new Date().toLocaleString("lv-LV"), ""]
+const asText = r => ["CARGOPACK anketa", new Date().toLocaleString("lv-LV"), ""]
   .concat(...r.map(x => [x.label, "  " + (x.value || "—"), ""])).join("\n");
 
 const KEY = "cargopack-anketa-v3", saved = $("saved");
@@ -390,7 +437,7 @@ form.addEventListener("submit", async e => {
   if (!CONFIG.endpoint){ showDone("manual", text); return; }
   $("submitBtn").disabled = true; setStatus(DONE.sending);
   try{
-    const p = { subject: "Cargopack anketa: " + name, from_name: name, name, email, message: text };
+    const p = { subject: "CARGOPACK anketa: " + name, from_name: name, name, email, message: text };
     if (CONFIG.accessKey) p.access_key = CONFIG.accessKey;
     const r = await fetch(CONFIG.endpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(p) });
     if (!r.ok) throw new Error("HTTP " + r.status);
@@ -409,7 +456,7 @@ $("dlBtn").addEventListener("click", () => {
   a.download = "cargopack-anketa.txt"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
 });
 $("mailBtn").addEventListener("click", () => {
-  location.href = "mailto:" + encodeURIComponent(CONFIG.ownerEmail || "") + "?subject=" + encodeURIComponent("Cargopack anketa") +
+  location.href = "mailto:" + encodeURIComponent(CONFIG.ownerEmail || "") + "?subject=" + encodeURIComponent("CARGOPACK anketa") +
                   "&body=" + encodeURIComponent($("fallbackText").value.slice(0, 1800));
 });
 </script>
