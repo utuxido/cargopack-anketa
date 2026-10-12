@@ -85,7 +85,7 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px}
 .hanger{position:fixed;z-index:5;top:0;right:clamp(10px,calc((100vw - 1050px)/2),160px);width:min(230px,28vw);pointer-events:none;transform:translateZ(0)}
 .hanger-swing{width:100%;transform-origin:50% 0;will-change:transform}
 .hanger-cord{display:block;width:2px;height:var(--cord-length,135px);margin:0 auto;background:#E8B923;box-shadow:0 0 1px rgba(255,255,255,.6)}
-.hanger-logo{display:block;width:60%;height:auto;margin:0 auto;padding:3px;background:rgba(242,244,243,.95);border-radius:4px;filter:drop-shadow(0 7px 5px rgba(0,0,0,.18))}
+.hanger-logo{display:block;width:66%;height:auto;margin:0 auto;padding:3px;background:rgba(242,244,243,.95);border-radius:4px;filter:drop-shadow(0 7px 5px rgba(0,0,0,.18))}
 @media(max-width:760px){.hanger{width:145px;right:8px}.hanger-logo{filter:drop-shadow(0 4px 4px rgba(0,0,0,.16))}}
 @media(prefers-reduced-motion:reduce){.hanger-swing{will-change:auto}}
 </style>
@@ -396,7 +396,7 @@ let lastScrollY = window.scrollY, swingAngle = 0, swingVelocity = 0, swingFrame 
 function moveHanger(){
   const travel = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   const progress = travel ? Math.min(1, window.scrollY / travel) : 0;
-  hangerCord.style.setProperty("--cord-length", `${135 + progress * 190}px`);
+  hangerCord.style.setProperty("--cord-length", "135px");
   const delta = window.scrollY - lastScrollY;
   lastScrollY = window.scrollY;
   if (!reduceMotion && delta !== 0) {
